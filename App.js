@@ -1,9 +1,10 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Text} from 'react-native';
 
 const App = () => {
-  return <></>;
+  return <Text>App.js</Text>;
 };
 
 const styles = StyleSheet.create({});
