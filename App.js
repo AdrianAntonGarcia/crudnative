@@ -1,10 +1,22 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-
 import {StyleSheet, Text} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {Inicio} from './views/Inicio';
+
+const Stack = createStackNavigator();
 
 const App = () => {
-  return <Text>App.js</Text>;
+  return (
+    <>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Inicio">
+          <Stack.Screen component={Inicio} name="Inicio" />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
+  );
 };
 
 const styles = StyleSheet.create({});
