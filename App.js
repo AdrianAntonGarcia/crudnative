@@ -1,12 +1,13 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
-import {StyleSheet, Text} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Inicio} from './views/Inicio';
 import {NuevoCliente} from './views/NuevoCliente';
 import {DetallesCliente} from './views/DetallesCliente';
+import {Barra} from './components/ui/Barra';
 
 const Stack = createStackNavigator();
 
@@ -37,7 +38,15 @@ const App = () => {
               fontWeight: 'bold',
             },
           }}>
-          <Stack.Screen component={Inicio} name="Inicio" />
+          <Stack.Screen
+            component={Inicio}
+            name="Inicio"
+            options={({navigation, route}) => ({
+              headerLeft: props => (
+                <Barra {...props} navigation={navigation} route={route} />
+              ),
+            })}
+          />
           <Stack.Screen
             component={NuevoCliente}
             name="NuevoCliente"
