@@ -11,7 +11,7 @@ import {
 } from 'react-native-paper';
 import globalStyles from '../styles/global';
 
-export const NuevoCliente = () => {
+export const NuevoCliente = ({navigation}) => {
   // campos formulario
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
@@ -42,7 +42,12 @@ export const NuevoCliente = () => {
       console.log(error);
     }
     // Redireccionar
+    navigation.navigate('Inicio');
     // Limpiar el form (opcional)
+    setNombre('');
+    setTelefono('');
+    setCorreo('');
+    setEmpresa('');
   };
   return (
     <View style={globalStyles.contenerdor}>
