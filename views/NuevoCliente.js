@@ -1,5 +1,6 @@
+import axios from 'axios';
 import React, {useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Platform} from 'react-native';
 import {
   TextInput,
   Headline,
@@ -18,7 +19,7 @@ export const NuevoCliente = () => {
   const [empresa, setEmpresa] = useState('');
   const [alerta, setAlerta] = useState(false);
 
-  const guardarCliente = () => {
+  const guardarCliente = async () => {
     // Validar
     if (nombre === '' || telefono === '' || correo === '' || empresa === '') {
       setAlerta(true);
@@ -29,6 +30,17 @@ export const NuevoCliente = () => {
     const cliente = {nombre, telefono, correo, empresa};
     console.log(cliente);
     // Guardar el cliente en la api
+    try {
+      if (Platform.OS === 'ios') {
+        // para ios
+        await axios.post('http://localhost:3000/clientes', cliente);
+      } else {
+        // para android
+        await axios.post('http://10.0.2.2:3000/clientes', cliente);
+      }
+    } catch (error) {
+      console.log(error);
+    }
     // Redireccionar
     // Limpiar el form (opcional)
   };

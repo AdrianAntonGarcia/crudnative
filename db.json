@@ -1,0 +1,25 @@
+{
+  "clientes": [
+    {
+      "nombre": "adri",
+      "telefono": "123456789",
+      "correo": "adada@gmail.com",
+      "empresa": "eec",
+      "id": 1
+    },
+    {
+      "nombre": "adri2",
+      "telefono": "123456789",
+      "correo": "adada@gmail.com",
+      "empresa": "eec",
+      "id": 2
+    },
+    {
+      "nombre": "adri2",
+      "telefono": "123456789",
+      "correo": "adada@gmail.com",
+      "empresa": "eec",
+      "id": 3
+    }
+  ]
+}
