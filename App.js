@@ -27,7 +27,7 @@ const App = () => {
     <>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Inicio"
+          initialRouteName="NuevoCliente"
           screenOptions={{
             headerStyle: {
               backgroundColor: theme.colors.primary,
