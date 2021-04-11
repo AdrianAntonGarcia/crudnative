@@ -10,8 +10,17 @@ export const NuevoCliente = () => {
   const [correo, setCorreo] = useState('');
   const [empresa, setEmpresa] = useState('');
 
-  const leerNombre = () => {
-    console.log('Escribiendo el nombre');
+  const guardarCliente = () => {
+    // Validar
+    if (nombre === '' || telefono === '' || correo === '' || empresa === '') {
+      console.log('Campos vacios');
+      return;
+    }
+    console.log('Guardando');
+    // Generar el cliente
+    // Guardar el cliente en la api
+    // Redireccionar
+    // Limpiar el form (opcional)
   };
   return (
     <View style={globalStyles.contenerdor}>
@@ -44,6 +53,12 @@ export const NuevoCliente = () => {
         value={empresa}
         style={styles.input}
       />
+      <Button
+        icon="pencil-circle"
+        mode="contained"
+        onPress={() => guardarCliente()}>
+        Guardar Cliente
+      </Button>
     </View>
   );
 };
