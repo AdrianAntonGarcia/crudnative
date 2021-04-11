@@ -24,10 +24,10 @@ const theme = {
 console.log(theme);
 const App = () => {
   return (
-    <>
+    <PaperProvider>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="NuevoCliente"
+          initialRouteName="Inicio"
           screenOptions={{
             headerStyle: {
               backgroundColor: theme.colors.primary,
@@ -59,7 +59,7 @@ const App = () => {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </>
+    </PaperProvider>
   );
 };
 
