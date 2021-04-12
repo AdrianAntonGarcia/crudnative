@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import {Text} from 'react-native';
+import {Text, FlatList, View} from 'react-native';
+import {List} from 'react-native-paper';
 
 export const Inicio = () => {
   // state de la app
@@ -16,7 +17,17 @@ export const Inicio = () => {
     };
     obtenerClientesApi();
   }, []);
-  return <Text>Desde Inicio</Text>;
+  return (
+    <View>
+      <FlatList
+        keyExtractor={cliente => cliente.id.toString()}
+        data={clientes}
+        renderItem={({item}) => (
+          <List.Item title={item.nombre} description={item.empresa} />
+        )}
+      />
+    </View>
+  );
 };
 
 export default Inicio;
