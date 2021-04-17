@@ -11,7 +11,8 @@ import {
 } from 'react-native-paper';
 import globalStyles from '../styles/global';
 
-export const NuevoCliente = ({navigation}) => {
+export const NuevoCliente = ({navigation, route}) => {
+  const {setConsultarAPI} = route.params;
   // campos formulario
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
@@ -25,10 +26,8 @@ export const NuevoCliente = ({navigation}) => {
       setAlerta(true);
       return;
     }
-    console.log('Guardando');
     // Generar el cliente
     const cliente = {nombre, telefono, correo, empresa};
-    console.log(cliente);
     // Guardar el cliente en la api
     try {
       if (Platform.OS === 'ios') {
@@ -48,6 +47,8 @@ export const NuevoCliente = ({navigation}) => {
     setTelefono('');
     setCorreo('');
     setEmpresa('');
+    // Guardar consultar API para detectar que hay un nuevo cliente
+    setConsultarAPI(true);
   };
   return (
     <View style={globalStyles.contenerdor}>

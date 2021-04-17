@@ -1,32 +1,18 @@
 {
   "clientes": [
     {
-      "nombre": "adri",
-      "telefono": "123456789",
-      "correo": "adada@gmail.com",
-      "empresa": "eec",
+      "nombre": "adrian",
+      "telefono": "637174014",
+      "correo": "adrtlergmail.com",
+      "empresa": "eef",
       "id": 1
     },
     {
       "nombre": "adri2",
-      "telefono": "123456789",
-      "correo": "adada@gmail.com",
-      "empresa": "eec",
+      "telefono": "123213",
+      "correo": "adsasdgmail.com",
+      "empresa": "22",
       "id": 2
-    },
-    {
-      "nombre": "adri2",
-      "telefono": "123456789",
-      "correo": "adada@gmail.com",
-      "empresa": "eec",
-      "id": 3
-    },
-    {
-      "nombre": "adri2",
-      "telefono": "123456789",
-      "correo": "adada@gmail.com",
-      "empresa": "eec",
-      "id": 4
     }
   ]
 }
