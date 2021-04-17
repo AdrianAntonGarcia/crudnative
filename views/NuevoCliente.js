@@ -46,17 +46,35 @@ export const NuevoCliente = ({navigation, route}) => {
     }
     // Generar el cliente
     const cliente = {nombre, telefono, correo, empresa};
-    // Guardar el cliente en la api
-    try {
-      if (Platform.OS === 'ios') {
-        // para ios
-        await axios.post('http://localhost:3000/clientes', cliente);
-      } else {
-        // para android
-        await axios.post('http://10.0.2.2:3000/clientes', cliente);
+    // Si estamos editando o creando un nuevo cliente
+    if (route.params.cliente) {
+      // Editar el cliente en la api
+      const {id} = route.params.cliente;
+      cliente.id = id;
+      try {
+        if (Platform.OS === 'ios') {
+          // para ios
+          await axios.put(`http://localhost:3000/clientes/${id}`, cliente);
+        } else {
+          // para android
+          await axios.put(`http://10.0.2.2:3000/clientes/${id}`, cliente);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+    } else {
+      // Guardar el cliente en la api
+      try {
+        if (Platform.OS === 'ios') {
+          // para ios
+          await axios.post('http://localhost:3000/clientes', cliente);
+        } else {
+          // para android
+          await axios.post('http://10.0.2.2:3000/clientes', cliente);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
     // Redireccionar
     navigation.navigate('Inicio');
