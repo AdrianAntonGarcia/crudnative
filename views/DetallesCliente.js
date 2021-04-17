@@ -1,10 +1,23 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Alert} from 'react-native';
 import {Headline, Text, Subheading, Button} from 'react-native-paper';
 import globalStyles from '../styles/global';
 
 export const DetallesCliente = ({route}) => {
   const {nombre, telefono, correo, empresa} = route.params.item;
+  const mostrarConfirmacion = () => {
+    Alert.alert(
+      '¿Deseas eliminar este cliente?',
+      'Un contacto eliminado no se puede recuperar',
+      [
+        {text: 'Si, Eliminar', onPress: () => eliminarContacto()},
+        {text: 'Cancelar', style: 'cancel'},
+      ],
+    );
+  };
+  const eliminarContacto = () => {
+    console.log('Eliminando');
+  };
   return (
     <View style={globalStyles.contenerdor}>
       <Headline style={globalStyles.titulo}>{nombre}</Headline>
@@ -17,7 +30,13 @@ export const DetallesCliente = ({route}) => {
       <Text style={styles.texto}>
         Teléfono: <Subheading>{telefono}</Subheading>{' '}
       </Text>
-      <Button>Eliminar Cliente</Button>
+      <Button
+        style={styles.boton}
+        mode="contained"
+        icon="cancel"
+        onPress={() => mostrarConfirmacion()}>
+        Eliminar Cliente
+      </Button>
     </View>
   );
 };
@@ -25,6 +44,10 @@ const styles = StyleSheet.create({
   texto: {
     marginBottom: 20,
     fontSize: 18,
+  },
+  boton: {
+    marginTop: 100,
+    backgroundColor: 'red',
   },
 });
 export default DetallesCliente;
