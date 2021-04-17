@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useState} from 'react';
+import React, {useLayoutEffect, useState, useEffect} from 'react';
 import {View, StyleSheet, Platform} from 'react-native';
 import {
   TextInput,
@@ -12,13 +12,31 @@ import {
 import globalStyles from '../styles/global';
 
 export const NuevoCliente = ({navigation, route}) => {
-  const {setConsultarAPI} = route.params;
+  const {setConsultarAPI, cliente} = route.params;
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      setConsultarAPI,
+    });
+  }, [navigation, setConsultarAPI]);
   // campos formulario
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
   const [correo, setCorreo] = useState('');
   const [empresa, setEmpresa] = useState('');
   const [alerta, setAlerta] = useState(false);
+  //Detectar si estamos editando o no
+  useEffect(() => {
+    if (route.params.cliente) {
+      console.log('Estamos editando');
+      const {nombre, telefono, correo, empresa} = route.params.cliente;
+      setNombre(nombre);
+      setTelefono(telefono);
+      setCorreo(correo);
+      setEmpresa(empresa);
+    } else {
+      console.log('Nuevo Cliente');
+    }
+  }, [route.params.cliente]);
 
   const guardarCliente = async () => {
     // Validar

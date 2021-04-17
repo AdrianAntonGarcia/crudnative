@@ -2,7 +2,6 @@ import React from 'react';
 import {Button} from 'react-native-paper';
 
 export const Barra = ({navigation, route}) => {
-  console.log(navigation);
   const handlePress = () => {
     navigation.navigate('NuevoCliente');
   };

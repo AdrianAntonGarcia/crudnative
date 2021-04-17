@@ -1,12 +1,17 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import {View, StyleSheet, Alert} from 'react-native';
-import {Headline, Text, Subheading, Button} from 'react-native-paper';
+import {Headline, Text, Subheading, Button, FAB} from 'react-native-paper';
 import globalStyles from '../styles/global';
 import axios from 'axios';
 
 export const DetallesCliente = ({navigation, route}) => {
   const {nombre, telefono, correo, empresa, id} = route.params.item;
   const {setConsultarAPI} = route.params;
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      setConsultarAPI,
+    });
+  }, [navigation, setConsultarAPI]);
   const mostrarConfirmacion = () => {
     Alert.alert(
       '¿Deseas eliminar este cliente?',
@@ -47,6 +52,16 @@ export const DetallesCliente = ({navigation, route}) => {
         onPress={() => mostrarConfirmacion()}>
         Eliminar Cliente
       </Button>
+      <FAB
+        icon="pencil"
+        style={globalStyles.fab}
+        onPress={() =>
+          navigation.navigate('NuevoCliente', {
+            setConsultarAPI,
+            cliente: route.params.item,
+          })
+        }
+      />
     </View>
   );
 };

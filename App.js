@@ -21,7 +21,6 @@ const theme = {
   },
 };
 
-console.log(theme);
 const App = () => {
   return (
     <PaperProvider>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, View} from 'react-native';
 import {List, Headline, Button, FAB} from 'react-native-paper';
 import globalStyles from '../styles/global';
 
@@ -47,18 +47,11 @@ export const Inicio = ({navigation}) => {
       />
       <FAB
         icon="plus"
-        style={styles.fav}
+        style={globalStyles.fab}
         onPress={() => navigation.navigate('NuevoCliente', {setConsultarAPI})}
       />
     </View>
   );
 };
-const styles = StyleSheet.create({
-  fav: {
-    position: 'absolute',
-    margin: 20,
-    right: 0,
-    bottom: 20,
-  },
-});
+
 export default Inicio;
